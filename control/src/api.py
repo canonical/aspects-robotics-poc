@@ -2,7 +2,7 @@ from typing import Optional
 
 import requests
 
-from src.registries import set_registry_value
+from control.src.confdb import set_confdb_value
 from src.device import generate_keys, get_architecture, get_ip_address
 
 
@@ -40,7 +40,7 @@ def register(base_url: str) -> None:
     )
     result = response.json()
 
-    set_registry_value(
+    set_confdb_value(
         "control-device",
         {
             "id": result["uuid"],

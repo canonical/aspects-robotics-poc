@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
-from src.registries import set_registry_value
+from src.confdb import set_confdb_value
 
 # interfaces
-set_registry_value(
+set_confdb_value(
     "control-interfaces",
     {
         "config.wlan0": {
@@ -12,12 +12,12 @@ set_registry_value(
         },
     },
 )
-set_registry_value(
+set_confdb_value(
     "control-interfaces",
     {"stats.wlan0": {"n-sent": 0, "n-received": 0}},
 )
 
-set_registry_value(
+set_confdb_value(
     "control-interfaces",
     {
         "config.eth0": {
@@ -26,13 +26,13 @@ set_registry_value(
         }
     },
 )
-set_registry_value(
+set_confdb_value(
     "control-interfaces",
     {"stats.eth0": {"n-sent": 0, "n-received": 0}},
 )
 
 # tunnel
-set_registry_value(
+set_confdb_value(
     "control-tunnel",
     {
         "interface": "eth0",
@@ -42,7 +42,7 @@ set_registry_value(
 )
 
 # telemetry
-set_registry_value(
+set_confdb_value(
     "control-telemetry",
     {
         "sample-rate": 2,

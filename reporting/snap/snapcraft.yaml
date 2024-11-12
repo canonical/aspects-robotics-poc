@@ -2,7 +2,7 @@ name: aspects-poc-reporting
 base: core22
 version: "0.2"
 license: GPL-2.0-only
-summary: Snap that consumes registry config.
+summary: Snap that consumes confdb config.
 description: |
   This snap collects metrics from the device and reports them
   on a cadence.

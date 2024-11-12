@@ -5,8 +5,8 @@ SIGNING_PUBLIC_KEY=xkd_Y2ay5N2Uo14v_wsCtfVJYLAVbJgxbiKM8Ne4mZBflaROriZgk2nb5i9Oe
 CHANNEL=edge
 
 
-# Enable configuration registries
-sudo snap set system experimental.registries=true
+# Enable confdbs
+sudo snap set system experimental.confdbs=true
 
 
 # Ack the assertions
@@ -16,8 +16,8 @@ snap known --remote account account-id=$ACCOUNT_ID | snap ack /dev/stdin
 echo "Acknowledging account-key/$SIGNING_PUBLIC_KEY assertion..."
 snap known --remote account-key public-key-sha3-384=$SIGNING_PUBLIC_KEY | snap ack /dev/stdin
 
-echo "Acknowledging network-registry.assert assertion..."
-curl -fsSL https://raw.githubusercontent.com/canonical/registries-poc/main/network-registry.assert | snap ack /dev/stdin
+echo "Acknowledging network-confdb.assert assertion..."
+curl -fsSL https://raw.githubusercontent.com/canonical/confdbs-poc/main/network-confdb.assert | snap ack /dev/stdin
 
 
 # Install the snaps

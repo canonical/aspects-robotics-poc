@@ -1,10 +1,10 @@
 from random import choice, randint, random
 
-from src.registries import get_registry_value, set_registry_value
+from vpn.src.confdb import get_confdb_value, set_confdb_value
 
 
 def changes() -> None:
-    config = get_registry_value("control-tunnel")
+    config = get_confdb_value("control-tunnel")
     peers = set(config["peers"])
 
     remove_node = random() <= 0.1
@@ -27,6 +27,6 @@ def changes() -> None:
         print(f"Peer node {peer} joined.")
 
     if remove_node or add_node:
-        set_registry_value("control-tunnel", {"peers": list(peers)})
+        set_confdb_value("control-tunnel", {"peers": list(peers)})
     else:
         print("No changes to tunnel.")
