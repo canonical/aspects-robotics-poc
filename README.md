@@ -1,8 +1,15 @@
-# Registries PoC
+# Confdbs PoC
 
-A proof of concept for snap configuration sharing across snaps using snapd's configuration registries.
+A proof of concept for snap configuration sharing across snaps using snapd's configuration confdbs.
 
-Please note that the previous name for _registries_ was _aspects_, that's why the snaps have the _aspects_ prefix.
+For a straightforward demo, please see [this repository](https://github.com/st3v3nmw/proxy-confdb) instead.
+
+> [!WARNING]
+> Confdbs were previously called registries and aspects before that. Snapd, Snapcraft, and the Store have not caught up with this rename yet.
+> For now, replace every mention of "confdb" with "registry" and "confdbs" with "registries".
+
+> [!NOTE]
+> Please note that the previous name for _registries_ was _aspects_, that's why the snaps have the _aspects_ prefix.
 
 ## Installation
 
@@ -12,7 +19,7 @@ To install this PoC, simply run the installation script:
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/canonical/registries-poc/main/install.sh)"
 Acknowledging account/f22PSauKuNkwQTM9Wz67ZCjNACuSjjhN assertion...
 Acknowledging account-key/xkd_Y2ay5N2Uo14v_wsCtfVJYLAVbJgxbiKM8Ne4mZBflaROriZgk2nb5i9Oebum assertion...
-Acknowledging network-registry.assert assertion...
+Acknowledging network-confdb.assert assertion...
 Installing aspects-poc-server...
 aspects-poc-server (edge) 0.2 from Stephen Mwangi (st3v3nmw) installed
 Installing aspects-poc-control...
@@ -29,7 +36,7 @@ Make sure that you've installed the PoC using the installation script above. The
 
 ### The control snap
 
-Everything shouuld run automatically and the `control` snap should contact the server for registration. Once registered, the `observe-device` registry view should look like this:
+Everything shouuld run automatically and the `control` snap should contact the server for registration. Once registered, the `observe-device` confdb view should look like this:
 
 ```console
 $ snap get f22PSauKuNkwQTM9Wz67ZCjNACuSjjhN/network/observe-device -d
@@ -130,7 +137,7 @@ systemd[1]: snap.aspects-poc-vpn.daemon.service: Deactivated successfully.
 systemd[1]: Finished snap.aspects-poc-vpn.daemon.service - Service for snap application aspects-poc-vpn.daemon.
 ```
 
-You can also check `observe-tunnel` registry view to see the current peers:
+You can also check `observe-tunnel` confdb view to see the current peers:
 
 ```console
 $ snap get f22PSauKuNkwQTM9Wz67ZCjNACuSjjhN/network/observe-tunnel peers
@@ -143,7 +150,7 @@ $ snap get f22PSauKuNkwQTM9Wz67ZCjNACuSjjhN/network/observe-tunnel peers
 
 ### The reporting snap
 
-The `reporting` snap has a service that runs every minute to collect metrics on the current state of the network. The metrics collected are controlled by the `control-metrics` registry view:
+The `reporting` snap has a service that runs every minute to collect metrics on the current state of the network. The metrics collected are controlled by the `control-metrics` confdb view:
 
 ```console
 $ snap get f22PSauKuNkwQTM9Wz67ZCjNACuSjjhN/network/control-telemetry -d
@@ -192,7 +199,7 @@ While the server is running (corresponding snap has been installed), documentati
 
 ## Development
 
-Make sure you've installed the PoC using the installation script above to make sure that all assertions are acknowledged and experimental features like registries are turned on.
+Make sure you've installed the PoC using the installation script above to make sure that all assertions are acknowledged and experimental features like confdbs are turned on.
 
 ### Building the snaps
 

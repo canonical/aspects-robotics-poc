@@ -3,7 +3,7 @@ from pprint import pformat
 from textwrap import indent
 from time import sleep
 
-from src.registries import get_registry_value
+from reporting.src.confdb import get_confdb_value
 
 logging.root.setLevel(logging.DEBUG)
 
@@ -15,14 +15,14 @@ sample_rate = 1
 def collect() -> None:
     global sample_rate
 
-    settings = get_registry_value("control-telemetry")
+    settings = get_confdb_value("control-telemetry")
     sample_rate = settings["sample-rate"]
 
     report = {}
-    device_info = get_registry_value("observe-device")
+    device_info = get_confdb_value("observe-device")
     report["device-id"] = device_info["uuid"]
 
-    interface_stats = get_registry_value(
+    interface_stats = get_confdb_value(
         "observe-interfaces",
         fields=["packets-received", "packets-sent"],
     )
@@ -32,7 +32,7 @@ def collect() -> None:
         report["packets-sent"] = interface_stats["packets-sent"]
 
     if settings["monitor-peers"]:
-        report["tunnel-peers"] = get_registry_value("observe-tunnel")["peers"]
+        report["tunnel-peers"] = get_confdb_value("observe-tunnel")["peers"]
 
     logging.info("The network stats are:")
     pretty = pformat(report)

@@ -2,7 +2,7 @@ name: aspects-poc-control
 base: core22
 version: "0.2"
 license: GPL-2.0-only
-summary: Snap that pulls and applies registry config.
+summary: Snap that pulls and applies confdb config.
 description: |
   This snap syncs with the registration server to register
   devices and sync configuration.

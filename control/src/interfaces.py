@@ -1,10 +1,10 @@
 from random import randint
 
-from src.registries import get_registry_value, set_registry_value
+from control.src.confdb import get_confdb_value, set_confdb_value
 
 
 def beat() -> None:
-    interfaces = get_registry_value(
+    interfaces = get_confdb_value(
         "control-interfaces",
         fields=["stats"],
     )["stats"]
@@ -17,7 +17,7 @@ def beat() -> None:
 
         print(f"{interface}: {up} packets ↑, {down} packets ↓")
 
-    set_registry_value(
+    set_confdb_value(
         "control-interfaces",
         {"stats": interfaces},
     )
