@@ -1,6 +1,6 @@
 from random import randint
 
-from control.src.confdb import get_confdb_value, set_confdb_value
+from src.confdb import get_confdb_value, set_confdb_value
 
 
 def beat() -> None:

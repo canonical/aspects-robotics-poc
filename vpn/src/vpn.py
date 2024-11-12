@@ -1,6 +1,6 @@
 from random import choice, randint, random
 
-from vpn.src.confdb import get_confdb_value, set_confdb_value
+from src.confdb import get_confdb_value, set_confdb_value
 
 
 def changes() -> None:
