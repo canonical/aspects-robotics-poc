@@ -3,7 +3,7 @@ from pprint import pformat
 from textwrap import indent
 from time import sleep
 
-from reporting.src.confdb import get_confdb_value
+from src.confdb import get_confdb_value
 
 logging.root.setLevel(logging.DEBUG)
 

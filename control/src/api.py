@@ -2,7 +2,7 @@ from typing import Optional
 
 import requests
 
-from control.src.confdb import set_confdb_value
+from src.confdb import set_confdb_value
 from src.device import generate_keys, get_architecture, get_ip_address
 
 
